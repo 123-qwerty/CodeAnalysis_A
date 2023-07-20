@@ -13,7 +13,7 @@ class EmployeeTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableV
     
     private var cellIdentifier : String!
     private var items : [T]!
-    var configureCell : (CELL, T) -> () = {_,_ in }
+    var configureCell : (CELL, T) -> (Void) = {_,_ in }
     
     
     init(cellIdentifier : String, items : [T], configureCell : @escaping (CELL, T) -> ()) {
