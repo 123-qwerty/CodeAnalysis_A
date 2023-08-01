@@ -2,5 +2,3 @@ version = 1
 
 [[analyzers]]
 name = "swift"
-name = "test-coverage"
-enabled = true
