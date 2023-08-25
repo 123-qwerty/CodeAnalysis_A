@@ -27,11 +27,24 @@ class ViewController: UIViewController {
         
         self.employeeViewModel =  EmployeesViewModel()
         self.employeeViewModel.bindEmployeeViewModelToController = {
-            self.updateDataSource()
+            self.updateDataSource  ()
         }
     }
     
     func updateDataSource(){
+        
+        self.dataSource = EmployeeTableViewDataSource(cellIdentifier: "EmployeeTableViewCell", items: self.employeeViewModel.empData.data, configureCell: { (cell, evm) in
+            cell.employeeIdLabel.text = evm.id
+            cell.employeeNameLabel.text = evm.employeeName
+        })
+        
+        DispatchQueue.main.async {
+            self.employeeTableView.dataSource = self.dataSource
+            self.employeeTableView.reloadData()
+        }
+    }
+
+        func updateDataSource(){
         
         self.dataSource = EmployeeTableViewDataSource(cellIdentifier: "EmployeeTableViewCell", items: self.employeeViewModel.empData.data, configureCell: { (cell, evm) in
             cell.employeeIdLabel.text = evm.id
